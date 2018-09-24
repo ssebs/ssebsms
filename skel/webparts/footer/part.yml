@@ -1,0 +1,5 @@
+---
+- webpart: "footer"
+  sections:
+    - 1:
+      filename: "footer.md"
