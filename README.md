@@ -30,5 +30,33 @@ Possible CMD's:
 
 ## Sample file structure example below
 ```
+.
+├── bin
+│   ├── _build.py
+│   ├── _clean.py
+│   ├── _init.py
+│   └── ssebsMS.py
+├── LICENSE
+├── README.md
+└── skel
+    ├── conf.yml
+    ├── page-parts
+    │   ├── footer.md
+    │   └── header.md
+    └── pages
+        ├── about
+        │   ├── about.md
+        │   ├── img
+        │   │   └── ssebsLogo.png
+        │   └── style
+        │       ├── __README__
+        │       └── style.css
+        └── home
+            ├── home.md
+            ├── img
+            │   └── ssebsLogo.png
+            └── style
+                ├── __README__
+                └── style.css
 
 ```
