@@ -18,7 +18,12 @@
 
 ## 1 - handle imports ##
 import os,sys
+sys.dont_write_bytecode=True    # disable .pyc files
+
 from markdown import markdown
+from _init import init_test
+from _build import build_test
+from _clean import clean_test
 
 ## 2 - help output below (future commands to support) ##
 help_output = '''ssebsMS.py <CMD> 
@@ -40,15 +45,15 @@ def main(argv):
 
     if "init" in cmd:
         print("Initializing ssebsMS website...")
-        #initialize_cms()
+        init()
         print("ssebsMS website initialized.")
     elif "build" in cmd:
         print("Building ssebsMS website...")
-        #build_cms()
+        build()
         print("ssebsMS website built.")
     elif "clean" in cmd:
         print("Cleaning ssebsMS website...")
-        #clean_cms()
+        clean()
         print("ssebsMS website cleaned.")
     elif "debug" in cmd:
         pass
@@ -60,16 +65,19 @@ def main(argv):
 
 ## 4 - initialization of website data ##
 def init():
+    init_test("ssebs_init")
     pass
 # end init()
 
 ## 5 - build existing website content
 def build():
+    build_test("ssebs_build")
     pass
 # end build()
 
 # 6 - clean generated website
 def clean():
+    clean_test("ssebs_clean")
     pass
 # end clean
 
