@@ -8,9 +8,9 @@
 #   1) [x] handle imports
 #   2) [x] help output text
 #   3) [x] main function
-#   4) [ ] hande init
-#   5) [ ] hande build
-#   6) [ ] hande clean
+#   4) [x] handle init
+#   5) [ ] handle build
+#   6) [x] handle clean
 #   7) [x] get arguments
 #   8) [x] main func def
 # have website be object oriented?
@@ -38,12 +38,9 @@ Possible CMD's:
 def main(argv):
     cmd = ""    # Command to run
 
-    #sample_md = '''# ssebs\n## Home page\nssebs home!\n'''
-    #print(markdown(sample_md))
 
     # choose what to do next depending on arg
     cmd = get_args(argv)
-    print(cmd)
 
     if "init" in cmd:
         print("Initializing " + cmd[1] + "website...")
@@ -58,7 +55,15 @@ def main(argv):
         clean(cmd[1])
         print(cmd[1] + " website cleaned.")
     elif "debug" in cmd:
-        pass
+        print("Args: " + str(cmd) + "\n\n")
+        sample_md = '''
+# ssebs
+<hr>
+## Home page
+
+ssebs home!
+        '''
+        print(markdown(sample_md))
     else:
         print(help_output)
         exit(1)

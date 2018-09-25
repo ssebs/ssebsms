@@ -1,8 +1,8 @@
 # ssebsms - ssebsMS - ssebs CMS
 
 ## Requirements to run
-- python3
-    - markdown module from pip3
+- `python3`
+    - `markdown` module from pip3
 
 
 
