@@ -4,11 +4,13 @@
 
 ##
 # ssebsMS.py file structure:
-#   - [x] main function
 #   - [x] handle imports
 #   - [x] help output text
+#   - [x] main function
+#   - [ ] hande init
+#   - [ ] hande build
+#   - [ ] hande clean
 #   - [x] get arguments
-#   - [ ] handle each argument
 #   - [x] main func def
 # have website be object oriented?
 ##
@@ -54,6 +56,18 @@ def main(argv):
         exit(1)
 
 # end main
+
+def init():
+    pass
+# end init()
+
+def build():
+    pass
+# end build()
+
+def clean():
+    pass
+# end clean
 
 ## get args from cli ##
 def get_args(argv):
