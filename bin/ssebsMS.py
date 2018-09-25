@@ -21,12 +21,12 @@ import os,sys
 sys.dont_write_bytecode=True    # disable .pyc files
 
 from markdown import markdown
-from _init import init_test
+from _init import init_test, init_entry
 from _build import build_test
 from _clean import clean_test
 
 ## 2 - help output below (future commands to support) ##
-help_output = '''ssebsMS.py <CMD> 
+help_output = '''ssebsMS.py <CMD> <site-name>
 
 Possible CMD's:
     init        <- initialize a new ssebsMS website
@@ -37,23 +37,25 @@ Possible CMD's:
 ## 3 - main function ##
 def main(argv):
     cmd = ""    # Command to run
-    sample_md = '''# ssebs\n## Home page\nssebs home!\n'''
-    print(markdown(sample_md))
+
+    #sample_md = '''# ssebs\n## Home page\nssebs home!\n'''
+    #print(markdown(sample_md))
 
     # choose what to do next depending on arg
     cmd = get_args(argv)
+    print(cmd)
 
     if "init" in cmd:
         print("Initializing ssebsMS website...")
-        init()
+        init(cmd[1])
         print("ssebsMS website initialized.")
     elif "build" in cmd:
         print("Building ssebsMS website...")
-        build()
+        build(cmd[1])
         print("ssebsMS website built.")
     elif "clean" in cmd:
         print("Cleaning ssebsMS website...")
-        clean()
+        clean(cmd[1])
         print("ssebsMS website cleaned.")
     elif "debug" in cmd:
         pass
@@ -64,19 +66,20 @@ def main(argv):
 # end main
 
 ## 4 - initialization of website data ##
-def init():
+def init(site_name):
     init_test("ssebs_init")
+    init_entry(site_name)
     pass
 # end init()
 
 ## 5 - build existing website content
-def build():
+def build(site_name):
     build_test("ssebs_build")
     pass
 # end build()
 
 # 6 - clean generated website
-def clean():
+def clean(site_name):
     clean_test("ssebs_clean")
     pass
 # end clean
@@ -84,13 +87,15 @@ def clean():
 ## 7 - get args from cli ##
 def get_args(argv):
     num_arg = len(sys.argv)
-    cmd_arg = None
+    cmd_arg = [None, None]
 
     if num_arg == 1:    # ssebsMS.py 
         return ""
     elif num_arg == 2:  # ssebsMS.py CMD
-        cmd_arg = sys.argv[1]
-    else:               # ssebsMS.py CMD ??? ?? ? 
+        cmd_arg = [sys.argv[1], "my_site"]
+    elif num_arg == 3:  # ssebsMS.py CMD site-name
+        cmd_arg = [sys.argv[1], sys.argv[2]]
+    else:               # ssebsMS.py CMD site-name ??? ?? ?
         return ""
     return cmd_arg
 # end get_args()
