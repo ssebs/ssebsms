@@ -1,25 +1,26 @@
 ###
 #   ssebsMS.py - ssebsMS cli utility
+#   (c) 2018 - Sebastian Safari - FOSS MIT License
 ###
 
 ##
 # ssebsMS.py file structure:
-#   - [x] handle imports
-#   - [x] help output text
-#   - [x] main function
-#   - [ ] hande init
-#   - [ ] hande build
-#   - [ ] hande clean
-#   - [x] get arguments
-#   - [x] main func def
+#   1) [x] handle imports
+#   2) [x] help output text
+#   3) [x] main function
+#   4) [ ] hande init
+#   5) [ ] hande build
+#   6) [ ] hande clean
+#   7) [x] get arguments
+#   8) [x] main func def
 # have website be object oriented?
 ##
 
-## imports ##
+## 1 - handle imports ##
 import os,sys
 from markdown import markdown
 
-## help output below (future commands to support) ##
+## 2 - help output below (future commands to support) ##
 help_output = '''ssebsMS.py <CMD> 
 
 Possible CMD's:
@@ -28,7 +29,7 @@ Possible CMD's:
     clean       <- clean generated files
     help        <- output this help page
 '''
-## main function ##
+## 3 - main function ##
 def main(argv):
     cmd = ""    # Command to run
     sample_md = '''# ssebs\n## Home page\nssebs home!\n'''
@@ -57,19 +58,22 @@ def main(argv):
 
 # end main
 
+## 4 - initialization of website data ##
 def init():
     pass
 # end init()
 
+## 5 - build existing website content
 def build():
     pass
 # end build()
 
+# 6 - clean generated website
 def clean():
     pass
 # end clean
 
-## get args from cli ##
+## 7 - get args from cli ##
 def get_args(argv):
     num_arg = len(sys.argv)
     cmd_arg = None
@@ -83,7 +87,7 @@ def get_args(argv):
     return cmd_arg
 # end get_args()
 
-## main func def ##
+## 8 - main func def ##
 if __name__ == "__main__":
     # execute only if run as a script
     main(sys.argv)
