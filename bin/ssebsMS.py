@@ -108,5 +108,4 @@ def get_args(argv):
 
 ## 8 - main func def ##
 if __name__ == "__main__":
-    # execute only if run as a script
     main(sys.argv)

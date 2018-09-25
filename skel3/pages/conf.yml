@@ -1,0 +1,7 @@
+---
+- site_name: "samplesite"
+  pages:
+    - 1:
+        filename: "home.md"
+    - 2:
+        filename: "about.md"
