@@ -1,7 +1,10 @@
 ---
-- site_name: "samplesite"
-  pages:
-    - 1:
-        filename: "home.md"
-    - 2:
-        filename: "about.md"
+- pages:
+    - home:
+        filename: "./home/home.md"
+        header: "./page-parts/header.md"
+        footer: "./page-parts/footer.md"
+    - about:
+        filename: "./about/about.md"
+        header: "./page-parts/header.md"
+        footer: "./page-parts/footer.md"
