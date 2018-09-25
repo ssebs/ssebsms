@@ -15,14 +15,13 @@ def init_test(my_arg):
     print("I'm in the _init.py file! Even " + str(my_arg) + " is here!")
 
 
-# check if public/ dir is created, if not, create it.
+# check if dir is created, if not, create it.
 def check_output_folder(site_name):
     if site_name in os.listdir("../"):
         print("Don't need to initialize, clean first if you want to restart.")
         return 1
     else:
         return 0
-
 # end check_output_folder()
 
 #

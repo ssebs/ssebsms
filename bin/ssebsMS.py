@@ -23,7 +23,7 @@ sys.dont_write_bytecode=True    # disable .pyc files
 from markdown import markdown
 from _init import init_test, init_entry
 from _build import build_test
-from _clean import clean_test
+from _clean import clean_test, clean_entry
 
 ## 2 - help output below (future commands to support) ##
 help_output = '''ssebsMS.py <CMD> <site-name>
@@ -46,17 +46,17 @@ def main(argv):
     print(cmd)
 
     if "init" in cmd:
-        print("Initializing ssebsMS website...")
+        print("Initializing " + cmd[1] + "website...")
         init(cmd[1])
-        print("ssebsMS website initialized.")
+        print(cmd[1] + " website initialized.")
     elif "build" in cmd:
-        print("Building ssebsMS website...")
+        print("Building " + cmd[1] + " website...")
         build(cmd[1])
-        print("ssebsMS website built.")
+        print(cmd[1] + " website built.")
     elif "clean" in cmd:
-        print("Cleaning ssebsMS website...")
+        print("Cleaning " + cmd[1] + " website...")
         clean(cmd[1])
-        print("ssebsMS website cleaned.")
+        print(cmd[1] + " website cleaned.")
     elif "debug" in cmd:
         pass
     else:
@@ -67,7 +67,7 @@ def main(argv):
 
 ## 4 - initialization of website data ##
 def init(site_name):
-    init_test("ssebs_init")
+    #init_test("ssebs_init")
     init_entry(site_name)
     pass
 # end init()
@@ -80,7 +80,8 @@ def build(site_name):
 
 # 6 - clean generated website
 def clean(site_name):
-    clean_test("ssebs_clean")
+    #clean_test("ssebs_clean")
+    clean_entry(site_name)
     pass
 # end clean
 
