@@ -16,6 +16,18 @@
 - Enable CI to build website from source MD files (aka make a script to build files)
 - ToC based on folder structure
 
+## Help page below
+```
+ssebsMS.py <CMD> <site-name>
+
+Possible CMD's:
+    init        <- initialize a new ssebsMS website
+    build       <- build current website
+    clean       <- clean generated files
+    help        <- output this help page
+
+```
+
 ## Sample file structure example below
 ```
 .
