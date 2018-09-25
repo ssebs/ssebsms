@@ -20,7 +20,11 @@
 ```
 .
 ├── bin
+│   ├── _build.py
+│   ├── _clean.py
+│   ├── _init.py
 │   └── ssebsMS.py
+├── .gitignore
 ├── LICENSE
 ├── README.md
 └── skel
@@ -40,8 +44,6 @@
     │   │   └── style
     │   │       └── __README__
     │   └── home
-    │       ├── 0-home
-    │       │   └── meta.conf
     │       ├── 1.md
     │       ├── 2.md
     │       ├── img
@@ -50,6 +52,8 @@
     │       ├── page.yml
     │       └── style
     │           └── __README__
+    ├── public
+    │   └── .stub
     └── webparts
         ├── footer
         │   ├── footer.md
@@ -65,4 +69,5 @@
             ├── part.yml
             └── style
                 └── __README__
+
 ```
