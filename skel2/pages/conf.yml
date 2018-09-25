@@ -1,9 +1,0 @@
----
-- site_name: "samplesite"
-  pages:
-    - 1:
-        url: "index.html"
-        filename: "home.md"
-    - 2:
-        url: "about.html"
-        filename: "about.md"
