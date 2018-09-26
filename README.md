@@ -18,12 +18,12 @@
 
 ## Help page below
 ```
-ssebsMS.py <CMD> <site-name>
+ssebsMS.sh <CMD> <site-name>
 
 Possible CMD's:
     init        <- initialize a new ssebsMS website
     build       <- build current website
-    clean       <- clean generated files
+    clean       <- clean generated files (delete for now)
     help        <- output this help page
 
 ```
@@ -38,25 +38,27 @@ Possible CMD's:
 │   └── ssebsMS.py
 ├── LICENSE
 ├── README.md
-└── skel
-    ├── conf.yml
-    ├── page-parts
-    │   ├── footer.md
-    │   └── header.md
-    └── pages
-        ├── about
-        │   ├── about.md
-        │   ├── img
-        │   │   └── ssebsLogo.png
-        │   └── style
-        │       ├── __README__
-        │       └── style.css
-        └── home
-            ├── home.md
-            ├── img
-            │   └── ssebsLogo.png
-            └── style
-                ├── __README__
-                └── style.css
+├── skel
+│   ├── conf.yml
+│   ├── page-parts
+│   │   ├── footer.md
+│   │   └── header.md
+│   ├── pages
+│   │   ├── about
+│   │   │   ├── about.md
+│   │   │   ├── img
+│   │   │   │   └── ssebsLogo.png
+│   │   │   └── style
+│   │   │       ├── __README__
+│   │   │       └── style.css
+│   │   └── home
+│   │       ├── home.md
+│   │       ├── img
+│   │       │   └── ssebsLogo.png
+│   │       └── style
+│   │           ├── __README__
+│   │           └── style.css
+│   └── public
+└── ssebsMS.sh
 
 ```

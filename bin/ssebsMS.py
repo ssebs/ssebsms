@@ -26,18 +26,17 @@ from _build import build_test, build_entry
 from _clean import clean_test, clean_entry
 
 ## 2 - help output below (future commands to support) ##
-help_output = '''ssebsMS.py <CMD> <site-name>
+help_output = '''ssebsMS.sh <CMD> <site-name>
 
 Possible CMD's:
     init        <- initialize a new ssebsMS website
     build       <- build current website
-    clean       <- clean generated files(or delete)
+    clean       <- clean generated files (delete for now)
     help        <- output this help page
 '''
 ## 3 - main function ##
 def main(argv):
     cmd = ""    # Command to run
-
 
     # choose what to do next depending on arg
     cmd = get_args(argv)
@@ -99,7 +98,12 @@ def get_args(argv):
     if num_arg == 1:    # ssebsMS.py 
         return ""
     elif num_arg == 2:  # ssebsMS.py CMD
-        cmd_arg = [sys.argv[1], "my_site"]
+        ans = input("Are you sure you want to use the default site at 'my_site/'? ")
+        if 'y' in ans.lower():
+            cmd_arg = [sys.argv[1], "my_site"]
+        else:
+            print("Please add a site name to the end of your command. e.g. 'ssebsMS.py CMD site-name'\n")
+            return ""
     elif num_arg == 3:  # ssebsMS.py CMD site-name
         cmd_arg = [sys.argv[1], sys.argv[2]]
     else:               # ssebsMS.py CMD site-name ??? ?? ?
