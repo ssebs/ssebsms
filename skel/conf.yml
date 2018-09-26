@@ -1,10 +1,10 @@
 ---
 - pages:
     - home:
-        filename: "./home/home.md"
+        filename: "./home/home.mdx"
         header: "./page-parts/header.md"
         footer: "./page-parts/footer.md"
     - about:
-        filename: "./about/about.md"
+        filename: "./about/about.mdx"
         header: "./page-parts/header.md"
         footer: "./page-parts/footer.md"

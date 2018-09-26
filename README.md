@@ -32,6 +32,27 @@ specify [site-name] in every command.
 
 ```
 
+Each page's config / content is in the same file. ssebsMS looks for a specified `.mdx` file
+
+mdx syntax below
+
+```
+!~title=<PAGE_TITLE>
+!~url=<URL.html>
+!~author=<YOUR NAME>
+
+~start-section=<SECTION_NAME>  # COMMENT
+~sec-theme=<THEME OF SECTION>  # COMMENT
+~sec-option=<sec-theme OPTION> # COMMENT
+
+<YOUR MARKDOWN HERE>
+
+~end-section=<SECTION_NAME>
+
+<OPTIONAL SECTION2 USING SAME SYNTAX ABOVE>
+```
+
+
 ## Sample file structure example below
 ```
 .
@@ -39,24 +60,28 @@ specify [site-name] in every command.
 │   ├── _build.py
 │   ├── _clean.py
 │   ├── _init.py
+│   ├── _page.py
 │   └── ssebsMS.py
+├── ENV-ssebsMS
 ├── LICENSE
 ├── README.md
 ├── skel
 │   ├── conf.yml
 │   ├── page-parts
 │   │   ├── footer.md
-│   │   └── header.md
+│   │   ├── header.md
+│   │   └── img
+│   │       └── ssebsLogo.png
 │   ├── pages
 │   │   ├── about
-│   │   │   ├── about.md
+│   │   │   ├── about.mdx
 │   │   │   ├── img
 │   │   │   │   └── ssebsLogo.png
 │   │   │   └── style
 │   │   │       ├── __README__
 │   │   │       └── style.css
 │   │   └── home
-│   │       ├── home.md
+│   │       ├── home.mdx
 │   │       ├── img
 │   │       │   └── ssebsLogo.png
 │   │       └── style
