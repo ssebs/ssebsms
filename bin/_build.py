@@ -14,8 +14,8 @@
 #
 
 ## Procedure on how pages will be built ##
-# [ ] Check / read config file
-# [ ] list dirs
+# [x] Check / read config file
+# [ ] list dirs / get from conf...
 # [ ] check for md files & make sure they match config
 # [ ] loop through page md files and get file based configs
 #   [ ] make list of page objects & set their settings
@@ -27,18 +27,28 @@
 import os,yaml
 
 # 2 - variable defs
-site_config = ""
+site_config = {}  # dictionary containing site config data (pages,page files, etc)
+pages_list = []   # list of the pages to render (home/about/etc)
+
 
 # 3 -
 
 # entry of build module
 def build_entry(site_name):
     if site_name in os.listdir("./"):
-        yml_str = ""
-        with open(site_name + "/conf.yml","r") as f:
-            yml_str = f.read()
-        site_config = yaml.load(yml_str)
-        print("Site config: \n" + str(site_config))
+
+        # read site config from sitename/conf.yml
+        site_config = yaml.load(open(site_name + "/conf.yml"))
+        #print("Site config: \n" + str(site_config))
+        site_config = site_config[0] # load() creates a list of 1 dict...
+
+        # get list of pages from conf
+        lenvar = len(site_config['pages'])
+        for x in range(0,lenvar):
+            for k, v in site_config['pages'][x].items():
+                pages_list.append(k)
+
+        print(pages_list)
     else:
         #print("ls: " + str(os.listdir("./")))
         print("No " + site_name + "/ directory found. Have you run 'ssebsMS.sh init'? See help...")
