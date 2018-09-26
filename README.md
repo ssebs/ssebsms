@@ -3,7 +3,7 @@
 ## Requirements to run
 - `python3`
     - `markdown` module from pip3
-
+    - `pyyaml` module from pip3
 
 
 ## Big picture idea / requested features

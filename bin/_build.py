@@ -24,16 +24,21 @@
 # [ ] test to make sure pages are there
 
 # 1 - imports
-import os
+import os,yaml
 
 # 2 - variable defs
+site_config = ""
 
 # 3 -
 
 # entry of build module
 def build_entry(site_name):
     if site_name in os.listdir("./"):
-        print(os.listdir("./" + site_name ))
+        yml_str = ""
+        with open(site_name + "/conf.yml","r") as f:
+            yml_str = f.read()
+        site_config = yaml.load(yml_str)
+        print("Site config: \n" + str(site_config))
     else:
         #print("ls: " + str(os.listdir("./")))
         print("No " + site_name + "/ directory found. Have you run 'ssebsMS.sh init'? See help...")

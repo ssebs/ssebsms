@@ -54,7 +54,3 @@ def init_entry(site_name, env_filename):
     else:
         return 1
 # end entry()
-
-## Code entry for testing ##
-#site_name = "mysite"
-#init_entry(site_name)
