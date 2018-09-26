@@ -29,7 +29,7 @@ import os,yaml
 # 2 - variable defs
 site_config = {}  # dictionary containing site config data (pages,page files, etc)
 pages_list = []   # list of the pages to render (home/about/etc)
-
+pages = []
 
 # 3 -
 
@@ -52,7 +52,9 @@ def build_entry(site_name):
         for p in pages_list:
             print(os.listdir(site_name + "/pages/" + p + "/"))
             # TODO: Create object based on page config
-
+            # p = (home|about)
+            # filename param has to be full rel path e.g. site_name/pages/$p/$p['filename']
+            # pages.append(Page("url","filename","header_file","footer_file"))
     else:
         #print("ls: " + str(os.listdir("./")))
         print("No " + site_name + "/ directory found. Have you run 'ssebsMS.sh init'? See help...")
