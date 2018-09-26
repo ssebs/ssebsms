@@ -24,6 +24,20 @@ def check_output_folder(site_name):
         return 0
 # end check_output_folder()
 
+# set the ENV file if exists
+def set_ENV(site_name, env_filename):
+    if env_filename in os.listdir("./"):
+        # set site-name line with the new site-name
+        beginning = '''## ssebsMS-ENV - environment vars for ssebsMS
+# Sample below.
+# site-name = my_site    
+'''
+        with open(env_filename, "w") as f:
+            f.write(beginning)
+            f.write("site-name = " + site_name + "\n")
+        print("Setting " + env_filename + " site-name = " + site_name)
+# end set_ENV()
+
 #
 def copy_skel(site_name):
     #print("cp ./skel/", "./" + site_name + "/")
@@ -33,9 +47,10 @@ def copy_skel(site_name):
 # end copy_skel()
 
 # entry of init module
-def init_entry(site_name):
+def init_entry(site_name, env_filename):
     if not check_output_folder(site_name):
         copy_skel(site_name)
+        set_ENV(site_name, env_filename)
     else:
         return 1
 # end entry()

@@ -36,7 +36,7 @@ def build_entry(site_name):
         print(os.listdir("./" + site_name ))
     else:
         #print("ls: " + str(os.listdir("./")))
-        print("No " + site_name + "/ directory found. Have you run 'ssebsMS.py init'? See help...")
+        print("No " + site_name + "/ directory found. Have you run 'ssebsMS.sh init'? See help...")
 # end entry()
 
 # test definition for import testing

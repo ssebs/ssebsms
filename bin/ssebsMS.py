@@ -77,7 +77,7 @@ ssebs home!
 ## 4 - initialization of website data ##
 def init(site_name):
     #init_test("ssebs_init")
-    init_entry(site_name)
+    init_entry(site_name, env_filename)
     pass
 # end init()
 
@@ -91,7 +91,7 @@ def build(site_name):
 # 6 - clean generated website
 def clean(site_name):
     #clean_test("ssebs_clean")
-    clean_entry(site_name)
+    clean_entry(site_name, env_filename)
     pass
 # end clean
 
@@ -103,7 +103,6 @@ def get_args(argv):
     if num_arg == 1:    # ssebsMS.py 
         return ""
     elif num_arg == 2:  # ssebsMS.py CMD
-        # TODO: Check local env file
         # check local environment file
         if env_filename in os.listdir("./"):
             with open(env_filename, "r") as f:
