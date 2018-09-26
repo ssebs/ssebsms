@@ -26,13 +26,18 @@ from _build import build_test, build_entry
 from _clean import clean_test, clean_entry
 
 ## 2 - help output below (future commands to support) ##
-help_output = '''ssebsMS.sh <CMD> <site-name>
+env_filename = "ENV-ssebsMS"
+help_output = '''ssebsMS.sh <CMD> [site-name]
 
 Possible CMD's:
     init        <- initialize a new ssebsMS website
     build       <- build current website
     clean       <- clean generated files (delete for now)
     help        <- output this help page
+
+ENV file:
+    ''' + env_filename + '''    <- Modify this file so you don't have to 
+specify [site-name] in every command.
 '''
 ## 3 - main function ##
 def main(argv):
@@ -98,12 +103,29 @@ def get_args(argv):
     if num_arg == 1:    # ssebsMS.py 
         return ""
     elif num_arg == 2:  # ssebsMS.py CMD
-        ans = input("Are you sure you want to use the default site at 'my_site/'? ")
-        if 'y' in ans.lower():
-            cmd_arg = [sys.argv[1], "my_site"]
+        # TODO: Check local env file
+        # check local environment file
+        if env_filename in os.listdir("./"):
+            with open(env_filename, "r") as f:
+                #print("Contents of " + env_filename + ":")
+                for l in f:
+                    if not l.startswith("#"):
+                        #print("config line: " + l.strip("\n"))
+                        if l.startswith("site-name"):
+                            tmp = l.split("=")[1].strip()
+                            print("site-name is: " + tmp + ". To change this, delete the line in " + env_filename + " or run with <sitename> parameter.\n")
+                            cmd_arg = [sys.argv[1], tmp]
+                    else:
+                        # line in file starts with a comment
+                        pass
+            # end with open
         else:
-            print("Please add a site name to the end of your command. e.g. 'ssebsMS.py CMD site-name'\n")
-            return ""
+            ans = input("Are you sure you want to use the default site at 'my_site/'? ")
+            if 'y' in ans.lower():
+                cmd_arg = [sys.argv[1], "my_site"]
+            else:
+                print("Please add a site name to the end of your command. e.g. 'ssebsMS.py CMD site-name'\n")
+                return ""
     elif num_arg == 3:  # ssebsMS.py CMD site-name
         cmd_arg = [sys.argv[1], sys.argv[2]]
     else:               # ssebsMS.py CMD site-name ??? ?? ?

@@ -1,0 +1,4 @@
+## ssebsMS-ENV - environment vars for ssebsMS
+# Sample below.
+# site-name = my_site
+site-name = my_site

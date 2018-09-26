@@ -18,13 +18,17 @@
 
 ## Help page below
 ```
-ssebsMS.sh <CMD> <site-name>
+ssebsMS.sh <CMD> [site-name]
 
 Possible CMD's:
     init        <- initialize a new ssebsMS website
     build       <- build current website
     clean       <- clean generated files (delete for now)
     help        <- output this help page
+
+ENV file:
+    ENV-ssebsMS    <- Modify this file so you don't have to
+specify [site-name] in every command.
 
 ```
 
