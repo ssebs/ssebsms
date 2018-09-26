@@ -17,7 +17,7 @@ def init_test(my_arg):
 
 # check if dir is created, if not, create it.
 def check_output_folder(site_name):
-    if site_name in os.listdir("../"):
+    if site_name in os.listdir("./"):
         print("Don't need to initialize, clean first if you want to restart.")
         return 1
     else:
@@ -26,10 +26,10 @@ def check_output_folder(site_name):
 
 #
 def copy_skel(site_name):
-    print("cp ../skel/", "../" + site_name + "/")
-    shutil.copytree("../skel/", "../" + site_name + "/")
+    #print("cp ./skel/", "./" + site_name + "/")
+    shutil.copytree("./skel/", "./" + site_name + "/")
     print("Copied contents of skel/ to " + site_name + "/")
-    print("\nModify the contents of " + site_name + "/" + " and run 'python ssebsMS.py build' to build the generated HTML.")
+    print("\nModify the contents of " + site_name + "/" + " and run 'python ssebsMS.py build " + site_name + "' to build the generated HTML.")
 # end copy_skel()
 
 # entry of init module

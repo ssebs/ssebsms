@@ -22,7 +22,7 @@ sys.dont_write_bytecode=True    # disable .pyc files
 
 from markdown import markdown
 from _init import init_test, init_entry
-from _build import build_test
+from _build import build_test, build_entry
 from _clean import clean_test, clean_entry
 
 ## 2 - help output below (future commands to support) ##
@@ -31,7 +31,7 @@ help_output = '''ssebsMS.py <CMD> <site-name>
 Possible CMD's:
     init        <- initialize a new ssebsMS website
     build       <- build current website
-    clean       <- clean generated files
+    clean       <- clean generated files(or delete)
     help        <- output this help page
 '''
 ## 3 - main function ##
@@ -79,7 +79,8 @@ def init(site_name):
 
 ## 5 - build existing website content
 def build(site_name):
-    build_test("ssebs_build")
+    #build_test("ssebs_build")
+    build_entry(site_name)
     pass
 # end build()
 
