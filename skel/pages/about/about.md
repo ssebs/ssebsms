@@ -1,9 +1,10 @@
-!!-title=About
-!!-url=about.html
-!!-author=Sebastian Safari
---!section=intro
---!sec-theme="color" # options available: parallax, billboard, color, blank
---!sec-option="#ffffff"  # options available: "img name", "color"
+!~title=About
+!~url=about.html
+!~author=Sebastian Safari
+
+~start-section=intro
+~sec-theme="color" # options available: parallax, billboard, color, blank
+~sec-option="#ffffff"  # options available: "img name", "color"
 <head><link rel="stylesheet" href="style/style.css"></head>
 
 # About ssebs
@@ -14,11 +15,11 @@ ssebs represents a person that can do most things tech. This includes setting up
 
 ~ Sebastian Safari
 
-!--end-section=intro
+~end-section=intro
 
---!section=mid
---!sec-theme="blank" # options available: parallax, billboard, color, blank
---!sec-option=""  # options available: "img name", "color"
+~start-section=mid
+~sec-theme="blank" # options available: parallax, billboard, color, blank
+~sec-option=""  # options available: "img name", "color"
 > Contact me!
 
-!--end-section=mid
+~end-section=mid
