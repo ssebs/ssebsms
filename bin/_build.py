@@ -44,7 +44,7 @@ def build_entry(site_name):
 
         # get list of pages from conf
         lenvar = len(site_config['pages'])
-        for x in range(0,lenvar):
+        for x in range(0, lenvar):
             for k, v in site_config['pages'][x].items():
                 pages_list.append(k)
 

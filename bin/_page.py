@@ -16,13 +16,14 @@ from markdown import markdown
 class Page:
     def __init__(self, site_name, url, filename, header_file, footer_file):
         """
-
+        ;:param site_name:
         :param url:
         :param filename:
         :param header_file:
         :param footer_file:
         """
         # param based attrs
+        self.site_name = site_name
         self.url = url
         self.filename = filename
         self.header_file = header_file
@@ -89,33 +90,39 @@ class Page:
                 #print("Author = " + self.author)
 
             # get sections
-
+            ## plan on how to get sections from file:
+            # - read in file (duh)
+            # - if line starts with start-section
+            #   - add to tmp var until end-section is
+            #   - stop adding to tmp var
+            # - add tmp var to list
 
         return ret
     # end get_sections
 
     ## Main rendering method
     def render_page(self):
-        print(markdown(self.header_txt))
-        #print(markdown(self.page_txt))
-        #print(markdown(self.footer_txt))
+        tmp = ""
+        for line in self.header_txt:
+            tmp += line
+        print(markdown(tmp))
         pass
     # end render_page
 # end class Page
 
 ## TEST ##
-p = Page("test",
-        "index.html", "./test/pages/home/home.mdx",
+p = Page("test", "index.html",
+         "./test/pages/home/home.mdx",
          "./test/page-parts/header.md",
          "./test/page-parts/footer.md")
 
 #print("Printing header:")
 #print(p.get_header_text())
 
-#print("Rendering:")
-#p.render_page()
+print("Rendering:")
+p.render_page()
 #print("Page txt below")
 #print(p.get_page_text())
 
-print("Sections below")
-print(p.sections)
+#print("Sections below")
+#print(p.sections)
