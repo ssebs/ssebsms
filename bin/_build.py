@@ -11,11 +11,11 @@
 # 1) imports
 # 2) variable defs
 # 3)
-#
+# 4) entry
 
 ## Procedure on how pages will be built ##
 # [x] Check / read config file
-# [ ] list dirs / get from conf...
+# [x] list dirs / get from conf...
 # [ ] check for md files & make sure they match config
 # [ ] loop through page md files and get file based configs
 #   [ ] make list of page objects & set their settings
@@ -48,7 +48,11 @@ def build_entry(site_name):
             for k, v in site_config['pages'][x].items():
                 pages_list.append(k)
 
-        print(pages_list)
+        # check for md files in each page's directory just in case
+        for p in pages_list:
+            print(os.listdir(site_name + "/pages/" + p + "/"))
+            # TODO: Create object based on page config
+
     else:
         #print("ls: " + str(os.listdir("./")))
         print("No " + site_name + "/ directory found. Have you run 'ssebsMS.sh init'? See help...")
