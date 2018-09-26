@@ -77,6 +77,10 @@ class Page:
         #
         ##
         ret = []
+        tmp_str = ""
+        start_sec = False
+        end_sec = False
+        sec_count = 0
         for line in self.page_txt:
             # set top config vars
             if line.startswith("!~title="):
@@ -96,6 +100,24 @@ class Page:
             #   - add to tmp var until end-section is
             #   - stop adding to tmp var
             # - add tmp var to list
+            if line.startswith("~start-section="):
+                start_sec = True
+                end_sec = False
+
+            elif line.startswith("~end-section="):
+                end_sec = True
+                start_sec = False
+                ret.append(tmp_str)
+
+            if start_sec and not end_sec:
+                if line != "\n":
+                    print("in section" + line)
+                    # check for section info here
+                    sec_count = sec_count + 1
+                    tmp_str + line
+            else:
+                if line != "\n":
+                    print("NOT SEC" + line)
 
         return ret
     # end get_sections
@@ -119,10 +141,10 @@ p = Page("test", "index.html",
 #print("Printing header:")
 #print(p.get_header_text())
 
-print("Rendering:")
-p.render_page()
+#print("Rendering:")
+#p.render_page()
 #print("Page txt below")
 #print(p.get_page_text())
 
-#print("Sections below")
-#print(p.sections)
+print("Sections below")
+print(p.sections)
