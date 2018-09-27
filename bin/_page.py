@@ -39,6 +39,8 @@ class Page:
         self.header_txt = self.get_header_text()
         self.footer_txt = self.get_footer_text()
 
+        # raw_sections should be a list of text from mdx file, split by section
+        # sections should be a list of parsed sections
         self.raw_sections = self.get_sections() # self.raw_sections now contains list of sections w/ data
         self.sections = self.process_sections() # process the above var to parse important data / get ready to convert
 
@@ -118,7 +120,44 @@ class Page:
 
         :returns parsed mdx sections
         """
-        pass
+        ret = [{}]  # list of section dictionaries
+        sec_name = ""
+        sec_theme = ""
+        sec_option = ""
+        tmp_str = ""
+        for c, sec in enumerate(self.raw_sections):
+            print("SECTION " + str(c+1))
+            for line in sec.split("\n"):
+
+                # get section name
+                if line.startswith("~start-section="):
+                    sec_name = line.split("=")[1].strip("\n").strip()
+
+                # get section theme
+                elif line.startswith("~sec-theme="):
+                    sec_theme = line.split("=")[1]  # "parallax" # options available: parallax, billboard, color, blank
+                    if "#" in sec_theme:
+                        sec_theme = sec_theme.split("#")[0] # "parallax"
+                    if "\"" in sec_theme:
+                        sec_theme = sec_theme.replace("\"", "")
+                    #print("Sec theme=" + sec_theme)
+
+                # get section theme
+                elif line.startswith("~sec-option="):
+                    sec_option = line.split("=")[1] # "#41afff"  # options available: "img name", "color"
+                    if "#" in sec_option:
+                        # TODO: Find a way to not lose the hex color, but lose the comment
+                        sec_option = sec_option.split("#")[0]  # "#41afff"
+                    if "\"" in sec_option:
+                        sec_option = sec_option.replace("\"", "")
+                    print("Sec opt=" + sec_option)
+
+                #print("Line: " + line)
+
+            # end line in section data
+        # end for c,sec in raw_sections
+
+        return ret
 
     # end process_sections()
 
@@ -148,5 +187,5 @@ p = Page("test", "index.html",
 
 print("Sections below")
 
-for s in p.raw_sections:
-    print("SECTION: \n" + s)
+#for s in p.raw_sections:
+    #print("SECTION: \n" + s)
