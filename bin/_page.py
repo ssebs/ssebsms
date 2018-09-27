@@ -203,13 +203,23 @@ class Page:
         # - <img-name>  <- image for (billboard|parallax) themes
 
         print("Theme: " + str(sec['sec-theme']))
+        ret = ""
+
+        start_txt = '''
+           <section class="''' + sec['sec-theme'] + ''''" id="''' + sec['sec-name'] + '''">            
+                   '''
+        end_txt = '''
+           </section>
+                   '''
 
         # render based on theme
         if "color" in sec['sec-theme']:
-            print(sec['sec-theme'] + " is the theme chosen for " + sec['sec-name'])
-            print(sec['sec-option'] + " is the option for " + sec['sec-theme'])
+            #print(sec['sec-theme'] + " is the theme chosen for " + sec['sec-name'])
+            #print(sec['sec-option'] + " is the option for " + sec['sec-theme'])
 
             # do something with site_name/themes/color.txt
+
+            ret = start_txt + markdown(sec['sec-content']) + end_txt
 
         elif "billboard" in sec['sec-theme'] or "parallax" in sec['sec-theme']:
             print(sec['sec-theme'] + " is the theme chosen for " + sec['sec-name'])
@@ -219,16 +229,18 @@ class Page:
             # do something with site_name/themes/(billboard|parallax).txt
             # make sure sec-option is an image that's in this page's img/ dir
 
+            ret = start_txt + markdown(sec['sec-content']) + end_txt
 
         elif "blank" in sec['sec-theme']:
             print(sec['sec-theme'] + " is the theme chosen for " + sec['sec-name'])
             print(sec['sec-option'] + " is the option for " + sec['sec-theme'])
 
             # do something with site_name/themes/blank.txt
+
+            ret = start_txt + markdown(sec['sec-content']) + end_txt
         else:
             print(sec['sec-theme'] + " is not a valid sec-theme! Use (color|billboard|parallax|blank)!")
 
-        ret = ""
         return ret
     # end render_section(sec)
 

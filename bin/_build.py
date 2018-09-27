@@ -61,8 +61,8 @@ def build_entry(site_name):
         # render pages to html, and write to public/ dir
         for page in pages:
             print("Printing page: " + page.title)
-            page.render_page()[0]
-            #print(page.render_page()[0])
+            #page.render_page()[0]
+            print(page.render_page()[0])
 
     else:
         # print("ls: " + str(os.listdir("./")))
