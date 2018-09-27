@@ -25,7 +25,7 @@
 
 # 1 - imports
 import os, yaml, json
-from _page import Page
+
 
 # 2 - variable defs
 site_config = {}  # dictionary containing site config data (pages,page files, etc)
@@ -36,6 +36,7 @@ pages = []
 
 # entry of build module
 def build_entry(site_name):
+    from _page import Page  # needs to be imported here or else it doesn't contruct properly
     if site_name in os.listdir("./"):
 
         # read site config from sitename/conf.yml
