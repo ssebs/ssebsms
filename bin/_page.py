@@ -39,7 +39,8 @@ class Page:
         self.header_txt = self.get_header_text()
         self.footer_txt = self.get_footer_text()
 
-        self.sections = self.get_sections()
+        self.raw_sections = self.get_sections() # self.raw_sections now contains list of sections w/ data
+        self.sections = self.process_sections() # process the above var to parse important data / get ready to convert
 
     # end constructor
 
@@ -112,6 +113,15 @@ class Page:
         return ret
     # end get_sections
 
+    def process_sections(self):
+        """
+
+        :returns parsed mdx sections
+        """
+        pass
+
+    # end process_sections()
+
     ## Main rendering method
     def render_page(self):
         tmp = ""
@@ -138,5 +148,5 @@ p = Page("test", "index.html",
 
 print("Sections below")
 
-for s in p.sections:
+for s in p.raw_sections:
     print("SECTION: \n" + s)
