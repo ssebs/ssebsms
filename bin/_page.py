@@ -60,6 +60,10 @@ class Page:
     # end print_header
 
     def get_sections(self):
+        """
+
+        :returns: list of sections, with content of section in each part
+        """
         ## mdx syntax below
         # !~title=<PAGE_TITLE>
         # !~url=<URL.html>
@@ -76,11 +80,9 @@ class Page:
         # <OPTIONAL SECTION2 USING SAME SYNTAX ABOVE>
         #
         ##
-        ret = []
-        tmp_str = ""
+        ret = []        # final return list
+        tmp_str = ""    # tmp string to hold section data
         start_sec = False
-        end_sec = False
-        sec_count = 0
         for line in self.page_txt:
             # set top config vars
             if line.startswith("!~title="):
@@ -94,32 +96,19 @@ class Page:
                 #print("Author = " + self.author)
 
             # get sections
-            ## plan on how to get sections from file:
-            # - read in file (duh)
-            # - if line starts with start-section
-            #   - add to tmp var until end-section is
-            #   - stop adding to tmp var
-            # - add tmp var to list
             if line.startswith("~start-section="):
                 start_sec = True
-                end_sec = False
-                sec_count = sec_count + 1
-
             elif line.startswith("~end-section="):
-                end_sec = True
                 start_sec = False
                 ret.append(tmp_str)
-                #TODO: find a way to make sec_count append to the new str
-
-            if start_sec and not end_sec:
-                if line != "\n":
-                    print("in section" + line)
-                    # check for section info here
-                    tmp_str + line
+                tmp_str = ""
+            if start_sec:
+                #if line != "\n":
+                    #tmp_str += line
+                tmp_str += line
             else:
-                if line != "\n":
-                    print("NOT SEC" + line)
-
+                pass
+        # end for-line
         return ret
     # end get_sections
 
@@ -148,4 +137,6 @@ p = Page("test", "index.html",
 #print(p.get_page_text())
 
 print("Sections below")
-print(p.sections)
+
+for s in p.sections:
+    print("SECTION: \n" + s)
