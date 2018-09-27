@@ -34,7 +34,7 @@ specify [site-name] in every command.
 
 Each page's config / content is in the same file. ssebsMS looks for a specified `.mdx` file
 
-mdx syntax below
+#### mdx syntax below
 
 ```
 !~title=<PAGE_TITLE>
@@ -52,6 +52,15 @@ mdx syntax below
 <OPTIONAL SECTION2 USING SAME SYNTAX ABOVE>
 ```
 
+#### Themes and options listed below
+- sec-theme's:
+    - color       \<- color bg
+    - billboard   \<- picture bg
+    - parallax    \<- parallax'd image bg
+    - blank       \<- blank bg
+- sec-option's:
+    - \<color\>     \<- color for (color) theme
+    - \<img-name\>  \<- image for (billboard|parallax) themes 
 
 ## Sample file structure example below
 ```
@@ -76,6 +85,7 @@ mdx syntax below
 │   │   ├── about
 │   │   │   ├── about.mdx
 │   │   │   ├── img
+│   │   │   │   ├── code.jpg
 │   │   │   │   └── ssebsLogo.png
 │   │   │   └── style
 │   │   │       ├── __README__
@@ -83,11 +93,18 @@ mdx syntax below
 │   │   └── home
 │   │       ├── home.mdx
 │   │       ├── img
+│   │       │   ├── code.jpg
 │   │       │   └── ssebsLogo.png
 │   │       └── style
 │   │           ├── __README__
 │   │           └── style.css
-│   └── public
+│   ├── public
+│   └── themes
+│       ├── billboard.txt
+│       ├── blank.txt
+│       ├── color.txt
+│       └── parallax.txt
 └── ssebsMS.sh
+
 
 ```
