@@ -5,26 +5,30 @@
 
 ##
 #   This file should be ran by the ssebsMS.py file
-##
-
-##
-#   This file should contain a class definition for a 'page' object
+#   This file should contain a class definition for a 'Page' object
+#   'Page' object includes the following attributes after it's contructed
+#   - site_name
+#   - url
+#   - filename
+#   - header_file
+#   - footer_file
+#   - title
+#   -
 ##
 
 from markdown import markdown
 
+
 class Page:
-    def __init__(self, site_name, url, filename, header_file, footer_file):
+    def __init__(self, site_name, filename, header_file, footer_file):
         """
-        ;:param site_name:
-        :param url:
+        :param site_name:
         :param filename:
         :param header_file:
         :param footer_file:
         """
         # param based attrs
         self.site_name = site_name
-        self.url = url
         self.filename = filename
         self.header_file = header_file
         self.footer_file = footer_file
@@ -120,13 +124,13 @@ class Page:
 
         :returns parsed mdx sections
         """
-        ret = [{}]  # list of section dictionaries
+        ret = []  # list of section dictionaries [{}]
         sec_name = ""
         sec_theme = ""
         sec_option = ""
-        tmp_str = ""
+        sec_content = ""
         for c, sec in enumerate(self.raw_sections):
-            print("SECTION " + str(c+1))
+            # print("SECTION " + str(c+1))
             for line in sec.split("\n"):
 
                 # get section name
@@ -140,23 +144,42 @@ class Page:
                         sec_theme = sec_theme.split("#")[0] # "parallax"
                     if "\"" in sec_theme:
                         sec_theme = sec_theme.replace("\"", "")
-                    #print("Sec theme=" + sec_theme)
+                    # print("Sec theme=" + sec_theme)
 
                 # get section theme
                 elif line.startswith("~sec-option="):
                     sec_option = line.split("=")[1] # "#41afff"  # options available: "img name", "color"
                     if "#" in sec_option:
-                        # TODO: Find a way to not lose the hex color, but lose the comment
-                        sec_option = sec_option.split("#")[0]  # "#41afff"
+                        # don't lose the hex color, but lose the possible comment after
+                        if "#" in sec_option[:3]:   # maybe if the '#' is within 3 chars of the = it should be okay
+                            # print(sec_option[:3])  # "#4
+                            sec_option = sec_option.split("#")[1]  # "41afff"
+                            sec_option = "#" + sec_option   # Add the '#' back for the hex color
+                        else:   # value we want DOESN'T have '#' for hex code
+                            sec_option = sec_option.split("#")[0]  # "code.jpg"
                     if "\"" in sec_option:
                         sec_option = sec_option.replace("\"", "")
-                    print("Sec opt=" + sec_option)
-
-                #print("Line: " + line)
+                    # print("Sec opt=" + sec_option)
+                # get section content
+                else:
+                    sec_content += (line + "\n").replace("\"", r'\"')    # Add the newline back
+                # print("Line: " + line)
 
             # end line in section data
+
+            # add new data to return list
+            ret.append( {"sec-name": sec_name.strip(),
+                        "sec-theme": sec_theme.strip(),
+                        "sec-option": sec_option.strip(),
+                        "sec-content": sec_content.strip()} )
+            sec_name = ""
+            sec_theme = ""
+            sec_option = ""
+            sec_content = ""
         # end for c,sec in raw_sections
 
+        # import json
+        # print(json.dumps(ret))
         return ret
 
     # end process_sections()
@@ -172,7 +195,7 @@ class Page:
 # end class Page
 
 ## TEST ##
-p = Page("test", "index.html",
+p = Page("test",
          "./test/pages/home/home.mdx",
          "./test/page-parts/header.md",
          "./test/page-parts/footer.md")
@@ -185,7 +208,10 @@ p = Page("test", "index.html",
 #print("Page txt below")
 #print(p.get_page_text())
 
-print("Sections below")
+#print("Sections below")
 
 #for s in p.raw_sections:
     #print("SECTION: \n" + s)
+
+import json
+print(json.dumps(p.sections))

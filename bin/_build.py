@@ -24,7 +24,8 @@
 # [ ] test to make sure pages are there
 
 # 1 - imports
-import os,yaml
+import os, yaml, json
+from _page import Page
 
 # 2 - variable defs
 site_config = {}  # dictionary containing site config data (pages,page files, etc)
@@ -39,8 +40,7 @@ def build_entry(site_name):
 
         # read site config from sitename/conf.yml
         site_config = yaml.load(open(site_name + "/conf.yml"))
-        #print("Site config: \n" + str(site_config))
-        site_config = site_config[0] # load() creates a list of 1 dict...
+        # print("Site config: \n" + json.dumps(site_config))
 
         # get list of pages from conf
         lenvar = len(site_config['pages'])
@@ -48,15 +48,16 @@ def build_entry(site_name):
             for k, v in site_config['pages'][x].items():
                 pages_list.append(k)
 
-        # check for md files in each page's directory just in case
-        for p in pages_list:
-            print(os.listdir(site_name + "/pages/" + p + "/"))
-            # TODO: Create object based on page config
-            # p = (home|about)
-            # filename param has to be full rel path e.g. site_name/pages/$p/$p['filename']
-            # pages.append(Page("url","filename","header_file","footer_file"))
+        # create page objects for pages found from config
+        for count, page_name in enumerate(pages_list):
+            print("Page " + page_name)
+            for k, v in site_config['pages'][count - 1].items():
+                # print("Page: " + k + " file:" + v['filename'])
+                # print("Page: " + k + " hdr:" + v['header'])
+                # print("Page: " + k + " ftr:" + v['footer'])
+                pages.append(Page(site_name, v['filename'], v['header'], v['footer']))
     else:
-        #print("ls: " + str(os.listdir("./")))
+        # print("ls: " + str(os.listdir("./")))
         print("No " + site_name + "/ directory found. Have you run 'ssebsMS.sh init'? See help...")
 # end entry()
 

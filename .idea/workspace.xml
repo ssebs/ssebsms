@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="79d1f2e3-25c5-4dcb-86e8-169db3f49a81" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/ssebsms.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ssebsms.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ENV-ssebsMS" beforeDir="false" afterPath="$PROJECT_DIR$/ENV-ssebsMS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/_build.py" beforeDir="false" afterPath="$PROJECT_DIR$/bin/_build.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/bin/_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/skel/conf.yml" beforeDir="false" afterPath="$PROJECT_DIR$/skel/conf.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +29,8 @@
           <entry key="css" value="1" />
           <entry key="gitignore" value="1" />
           <entry key="md" value="19" />
-          <entry key="py" value="18" />
-          <entry key="yml" value="9" />
+          <entry key="py" value="20" />
+          <entry key="yml" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -33,8 +38,8 @@
           <entry key="CSS" value="1" />
           <entry key="Markdown" value="19" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="18" />
-          <entry key="YAML" value="9" />
+          <entry key="Python" value="20" />
+          <entry key="YAML" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -42,19 +47,19 @@
           <entry key="css" value="4" />
           <entry key="gitignore" value="6" />
           <entry key="md" value="1488" />
-          <entry key="mdx" value="1" />
-          <entry key="py" value="2542" />
-          <entry key="txt" value="79" />
-          <entry key="yml" value="117" />
+          <entry key="mdx" value="6" />
+          <entry key="py" value="4884" />
+          <entry key="txt" value="116" />
+          <entry key="yml" value="152" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="4" />
           <entry key="Markdown" value="1488" />
-          <entry key="PLAIN_TEXT" value="86" />
-          <entry key="Python" value="2542" />
-          <entry key="YAML" value="117" />
+          <entry key="PLAIN_TEXT" value="128" />
+          <entry key="Python" value="4884" />
+          <entry key="YAML" value="152" />
         </counts>
       </usages-collector>
     </session>
@@ -86,18 +91,14 @@
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+        <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/bin/_page.py">
+            <entry file="file://$PROJECT_DIR$/bin/_build.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="732">
-                  <caret line="121" column="4" selection-start-line="121" selection-start-column="4" selection-end-line="121" selection-end-column="4" />
+                <state relative-caret-position="422">
+                  <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
                   <folding>
-                    <element signature="e#1088#1151#0" />
-                    <element signature="e#1213#1279#0" />
-                    <element signature="e#1343#1409#0" />
-                    <element signature="e#1470#3504#0" />
-                    <marker date="1538029339937" expanded="true" signature="3402:3512" ph="..." />
+                    <element signature="e#646#667#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -110,11 +111,21 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bin/_page.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="556">
-                  <caret line="65" column="72" selection-start-line="65" selection-start-column="72" selection-end-line="65" selection-end-column="72" />
+                <state relative-caret-position="144">
+                  <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
                   <folding>
-                    <marker date="1538029339937" expanded="true" signature="3402:3512" ph="..." />
+                    <element signature="e#1900#3590#0" />
+                    <element signature="e#3655#6370#0" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/skel/conf.yml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="160">
+                  <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
                 </state>
               </provider>
             </entry>
@@ -145,6 +156,7 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="WARN_ABOUT_CRLF" value="false" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -163,10 +175,11 @@
         <option value="$PROJECT_DIR$/skel/page-parts/header.md" />
         <option value="$PROJECT_DIR$/skel/pages/home/home.md" />
         <option value="$PROJECT_DIR$/skel/pages/about/about.md" />
-        <option value="$PROJECT_DIR$/skel/conf.yml" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/skel/pages/home/home.mdx" />
+        <option value="$PROJECT_DIR$/test/conf.yml" />
         <option value="$PROJECT_DIR$/bin/_build.py" />
+        <option value="$PROJECT_DIR$/skel/conf.yml" />
         <option value="$PROJECT_DIR$/bin/_page.py" />
       </list>
     </option>
@@ -226,7 +239,7 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -266,8 +279,7 @@
             <path>
               <item name="ssebsms" type="b2602c69:ProjectViewProjectNode" />
               <item name="ssebsms" type="462c0819:PsiDirectoryNode" />
-              <item name="skel" type="462c0819:PsiDirectoryNode" />
-              <item name="page-parts" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -276,6 +288,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/bin" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -355,14 +368,21 @@
       <option name="project" value="LOCAL" />
       <updated>1537883802281</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="start getting info from section data">
+      <created>1538057782185</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1538057782185</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <frame x="-2" y="31" width="1924" height="1051" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.06855792" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1042654" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -373,7 +393,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.30421218" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32473117" />
       <window_info anchor="bottom" id="Python Console" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -388,7 +408,8 @@
     <MESSAGE value="ignore pycharm files" />
     <MESSAGE value="added man page to readme" />
     <MESSAGE value="small cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="small cleanup" />
+    <MESSAGE value="start getting info from section data" />
+    <option name="LAST_COMMIT_MESSAGE" value="start getting info from section data" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore" />
@@ -438,23 +459,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/skel/conf.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/skel/pages/home/home.mdx">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="224">
-            <caret line="14" selection-start-line="14" selection-end-line="14" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/skel/page-parts/header.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -477,13 +481,6 @@
         <state relative-caret-position="-288" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/_build.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="57" column="9" lean-forward="true" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/ssebsMS.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-142">
@@ -491,23 +488,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/pages/home/home.mdx">
+    <entry file="file://$PROJECT_DIR$/test/pages/home/home.mdx" />
+    <entry file="file://$PROJECT_DIR$/skel/pages/home/home.mdx">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="192">
+            <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/conf.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="160">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/_build.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+          <folding>
+            <element signature="e#646#667#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skel/conf.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/_page.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="732">
-          <caret line="121" column="4" selection-start-line="121" selection-start-column="4" selection-end-line="121" selection-end-column="4" />
+        <state relative-caret-position="144">
+          <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
           <folding>
-            <element signature="e#1088#1151#0" />
-            <element signature="e#1213#1279#0" />
-            <element signature="e#1343#1409#0" />
-            <element signature="e#1470#3504#0" />
-            <marker date="1538029339937" expanded="true" signature="3402:3512" ph="..." />
+            <element signature="e#1900#3590#0" />
+            <element signature="e#3655#6370#0" />
           </folding>
         </state>
       </provider>
