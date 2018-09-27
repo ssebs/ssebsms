@@ -57,6 +57,7 @@ def main(argv):
     elif "clean" in cmd:
         print("Cleaning " + cmd[1] + " website...")
         clean(cmd[1])
+        # TODO: have a clean and a delete
         print(cmd[1] + " website cleaned.")
     elif "debug" in cmd:
         print("Args: " + str(cmd) + "\n\n")

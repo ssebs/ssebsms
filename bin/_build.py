@@ -60,9 +60,11 @@ def build_entry(site_name):
 
         # render pages to html, and write to public/ dir
         for page in pages:
-            print("Printing page: " + page.title)
-            #page.render_page()[0]
-            print(page.render_page()[0])
+            print("Generating page: " + page.title + " at: " + site_name + "/public/" + page.url)
+            #print("url:" + page.url)
+            #print(page.render_page()[0])
+            with open(site_name + "/public/" + page.url, "w") as f:
+                f.write(page.render_page()[0])
 
     else:
         # print("ls: " + str(os.listdir("./")))
