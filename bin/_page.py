@@ -6,14 +6,14 @@
 ##
 #   This file should be ran by the ssebsMS.py file
 #   This file should contain a class definition for a 'Page' object
-#   'Page' object includes the following attributes after it's contructed
+#   'Page' object includes the following attributes after it's constructed
 #   - site_name
 #   - url
 #   - filename
 #   - header_file
 #   - footer_file
 #   - title
-#   -
+#   - section data
 ##
 
 from markdown import markdown
@@ -127,8 +127,8 @@ class Page:
 
     def process_sections(self):
         """
-
-        :returns parsed mdx sections
+        :returns parsed mdx sections:
+        sec-name, sec-theme, sec-option, sec-content
         """
         ret = []  # list of section dictionaries [{}]
         sec_name = ""
@@ -187,8 +187,50 @@ class Page:
         # import json
         # print(json.dumps(ret))
         return ret
-
     # end process_sections()
+
+    def render_section(self, sec):
+        # sec: {sec-name, sec-theme, sec-option, sec-content}
+        #
+        # sec-theme's:
+        # - color       <- color bg
+        # - billboard   <- picture bg
+        # - parallax    <- parallax'd image bg
+        # - blank       <- blank bg
+        #
+        # sec-option's:
+        # - <color>     <- color for (color) theme
+        # - <img-name>  <- image for (billboard|parallax) themes
+
+        print("Theme: " + str(sec['sec-theme']))
+
+        # render based on theme
+        if "color" in sec['sec-theme']:
+            print(sec['sec-theme'] + " is the theme chosen for " + sec['sec-name'])
+            print(sec['sec-option'] + " is the option for " + sec['sec-theme'])
+
+            # do something with site_name/themes/color.txt
+
+        elif "billboard" in sec['sec-theme'] or "parallax" in sec['sec-theme']:
+            print(sec['sec-theme'] + " is the theme chosen for " + sec['sec-name'])
+            print(sec['sec-option'] + " is the option for " + sec['sec-theme'])
+
+            # check if parallax or billboard, try to change at end so code is uniform aside from actual content
+            # do something with site_name/themes/(billboard|parallax).txt
+            # make sure sec-option is an image that's in this page's img/ dir
+
+
+        elif "blank" in sec['sec-theme']:
+            print(sec['sec-theme'] + " is the theme chosen for " + sec['sec-name'])
+            print(sec['sec-option'] + " is the option for " + sec['sec-theme'])
+
+            # do something with site_name/themes/blank.txt
+        else:
+            print(sec['sec-theme'] + " is not a valid sec-theme! Use (color|billboard|parallax|blank)!")
+
+        ret = ""
+        return ret
+    # end render_section(sec)
 
     ## Main rendering method
     def render_page(self):
@@ -217,8 +259,9 @@ class Page:
         final_out[0] += "\n   <!-- end header -->\n"
 
         for sec in self.sections:
+            # sections {sec-name, sec-theme, sec-option, sec-content}
             final_out[0] += "   <!-- start section: " + sec['sec-name'] + "-->\n"
-
+            final_out[0] += self.render_section(sec)
             final_out[0] += "\n   <!-- end section: " + sec['sec-name'] + "-->\n"
 
         final_out[0] += "   <!-- start footer -->\n"

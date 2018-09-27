@@ -36,7 +36,7 @@ pages = []          # list of page objects
 
 # entry of build module
 def build_entry(site_name):
-    from _page import Page  # needs to be imported here or else it doesn't contruct properly
+    from _page import Page  # needs to be imported here or else it doesn't construct properly
     if site_name in os.listdir("./"):
 
         # read site config from sitename/conf.yml
@@ -61,7 +61,8 @@ def build_entry(site_name):
         # render pages to html, and write to public/ dir
         for page in pages:
             print("Printing page: " + page.title)
-            print(page.render_page()[0])
+            page.render_page()[0]
+            #print(page.render_page()[0])
 
     else:
         # print("ls: " + str(os.listdir("./")))
