@@ -29,9 +29,13 @@ class Page:
         """
         # param based attrs
         self.site_name = site_name
-        self.filename = filename
-        self.header_file = header_file
-        self.footer_file = footer_file
+        self.filename = "./" + site_name + "/pages/" + filename
+        self.header_file = "./" + site_name + "/page-parts/" + header_file
+        self.footer_file = "./" + site_name + "/page-parts/" + footer_file
+
+        # print(self.filename)
+        # print(self.header_file)
+        # print(self.footer_file)
 
         # empty vars to be filled from files
         self.title = ""
@@ -39,9 +43,9 @@ class Page:
         self.author = ""
 
         # built attrs
-        self.page_txt = self.get_page_text()
-        self.header_txt = self.get_header_text()
-        self.footer_txt = self.get_footer_text()
+        self.page_txt = self.get_page_text()        # pre-parsed txt. Final is in self.sections
+        self.header_txt = self.get_header_text()    # final txt
+        self.footer_txt = self.get_footer_text()    # final txt
 
         # raw_sections should be a list of text from mdx file, split by section
         # sections should be a list of parsed sections
@@ -58,12 +62,14 @@ class Page:
 
     def get_header_text(self):
         with open(self.header_file) as f:
-            return f.readlines()
+            #return f.readlines()
+            return f.read()
     # end print_header
 
     def get_footer_text(self):
         with open(self.footer_file) as f:
-            return f.readlines()
+            #return f.readlines()
+            return f.read()
     # end print_header
 
     def get_sections(self):
@@ -186,32 +192,41 @@ class Page:
 
     ## Main rendering method
     def render_page(self):
-        tmp = ""
-        for line in self.header_txt:
-            tmp += line
-        print(markdown(tmp))
-        pass
+        # render order:
+        # opening/meta, header, sections, footer, closing
+        final_out = ["", ""]  # page content + url
+        opening_txt = '''
+<!doctype html>
+<html>
+<head>
+    <title> ''' + self.title + ''' </title>
+    <meta charset="UTF-8">
+    <meta name="author" content="''' + self.author + ''''">
+    <!-- TODO: Add keywords + description meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<html>
+'''
+        closing_txt = '''
+<!-- Page created by ssebsMS - https://github.com/ssebs/ssebsms -->    
+</html>
+'''
+        final_out[0] = opening_txt
+        final_out[0] += "   <!-- start header -->\n"
+        final_out[0] += markdown(self.header_txt)
+        final_out[0] += "\n   <!-- end header -->\n"
+
+        for sec in self.sections:
+            final_out[0] += "   <!-- start section: " + sec['sec-name'] + "-->\n"
+
+            final_out[0] += "\n   <!-- end section: " + sec['sec-name'] + "-->\n"
+
+        final_out[0] += "   <!-- start footer -->\n"
+        final_out[0] += markdown(self.footer_txt)
+        final_out[0] += "\n   <!-- end footer -->\n"
+
+        final_out[0] += closing_txt
+        return final_out   # page content + url
+
     # end render_page
 # end class Page
-
-## TEST ##
-p = Page("test",
-         "./test/pages/home/home.mdx",
-         "./test/page-parts/header.md",
-         "./test/page-parts/footer.md")
-
-#print("Printing header:")
-#print(p.get_header_text())
-
-#print("Rendering:")
-#p.render_page()
-#print("Page txt below")
-#print(p.get_page_text())
-
-#print("Sections below")
-
-#for s in p.raw_sections:
-    #print("SECTION: \n" + s)
-
-import json
-print(json.dumps(p.sections))
