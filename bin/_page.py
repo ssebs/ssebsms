@@ -103,17 +103,18 @@ class Page:
             if line.startswith("~start-section="):
                 start_sec = True
                 end_sec = False
+                sec_count = sec_count + 1
 
             elif line.startswith("~end-section="):
                 end_sec = True
                 start_sec = False
                 ret.append(tmp_str)
+                #TODO: find a way to make sec_count append to the new str
 
             if start_sec and not end_sec:
                 if line != "\n":
                     print("in section" + line)
                     # check for section info here
-                    sec_count = sec_count + 1
                     tmp_str + line
             else:
                 if line != "\n":
