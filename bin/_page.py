@@ -270,9 +270,9 @@ class Page:
 </html>
 '''
         final_out[0] = opening_txt
-        final_out[0] += "   <!-- start header -->\n"
+        final_out[0] += "   <!-- start header -->\n<header>\n"
         final_out[0] += markdown(self.header_txt)
-        final_out[0] += "\n   <!-- end header -->\n"
+        final_out[0] += "\n</header>\n   <!-- end header -->\n"
 
         for sec in self.sections:
             # sections {sec-name, sec-theme, sec-option, sec-content}
@@ -280,9 +280,9 @@ class Page:
             final_out[0] += self.render_section(sec)
             final_out[0] += "\n   <!-- end section: " + sec['sec-name'] + "-->\n"
 
-        final_out[0] += "   <!-- start footer -->\n"
+        final_out[0] += "   <!-- start footer -->\n<footer>\n"
         final_out[0] += markdown(self.footer_txt)
-        final_out[0] += "\n   <!-- end footer -->\n"
+        final_out[0] += "\n</footer>\n   <!-- end footer -->\n"
 
         final_out[0] += closing_txt
         return final_out   # page content + url

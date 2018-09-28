@@ -51,7 +51,7 @@ def build_entry(site_name):
 
         # create page objects for pages found from config
         for count, page_name in enumerate(pages_list):
-            #print("Page " + page_name)
+            # print("Page " + page_name)
             for k, v in site_config['pages'][count - 1].items():
                 # print("Page: " + k + " file:" + v['filename'])
                 # print("Page: " + k + " hdr:" + v['header'])

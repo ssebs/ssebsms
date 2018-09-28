@@ -47,6 +47,8 @@ def main(argv):
     # choose what to do next depending on arg
     cmd = get_args(argv)
 
+    # TODO: Add checks for build / run to make sure site is actually there
+
     if "init" in cmd:
         print("Initializing " + cmd[1] + "website...")
         init(cmd[1])
