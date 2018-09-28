@@ -3,20 +3,7 @@
 #   (c) 2018 - Sebastian Safari - FOSS MIT License
 ###
 
-##
-# ssebsMS.py file structure:
-#   1) [x] handle imports
-#   2) [x] help output text
-#   3) [x] main function
-#   4) [x] handle init
-#   5) [ ] handle build
-#   6) [x] handle clean
-#   7) [x] get arguments
-#   8) [x] main func def
-# have website be object oriented?
-##
-
-## 1 - handle imports ##
+## handle imports ##
 import os,sys
 sys.dont_write_bytecode=True    # disable .pyc files
 
@@ -26,7 +13,7 @@ from _build import build_test, build_entry
 from _clean import clean_test, clean_entry
 from _run import run_entry
 
-## 2 - help output below (future commands to support) ##
+## help output below (future commands to support) ##
 env_filename = "ENV-ssebsMS"
 help_output = '''ssebsMS.sh <CMD> [site-name]
 
@@ -41,7 +28,7 @@ Possible CMD's:
 ENV file:
     ''' + env_filename + '''    <- Modify this file so you don't have to specify [site-name] in every command.
 '''
-## 3 - main function ##
+## main function ##
 def main(argv):
     # choose what to do next depending on arg
     cmd = get_args(argv)
@@ -73,26 +60,26 @@ def main(argv):
 
 # end main
 
-## 4 - initialization of website data ##
+## initialization of website data ##
 def init(site_name):
     #init_test("ssebs_init")
     init_entry(site_name, env_filename)
     pass
 # end init()
 
-## 5 - build existing website content
+## build existing website content
 def build(site_name):
     #build_test("ssebs_build")
     build_entry(site_name)
     pass
 # end build()
 
-## 9 - run - server site
+## run - server site
 def run(site_name,port=8008):
     run_entry(site_name,port)
 # end run()
 
-# 6 - clean generated website
+# clean generated website
 def clean(site_name):
     #clean_test("ssebs_clean")
     clean_entry(site_name, env_filename)
@@ -123,7 +110,7 @@ def get_env_var():
     return ret
 # end get_env_var()
 
-## 7 - get args from cli ##
+## get args from cli ##
 def get_args(argv):
     num_arg = len(sys.argv)
     cmd_arg = [None, None]
@@ -145,6 +132,6 @@ def get_args(argv):
     return cmd_arg
 # end get_args()
 
-## 8 - main func def ##
+## main func def ##
 if __name__ == "__main__":
     main(sys.argv)

@@ -32,7 +32,30 @@ site_config = {}    # dictionary containing site config data (pages,page files, 
 pages_list = []     # list of the pages to render (home/about/etc)
 pages = []          # list of page objects
 
-# 3 -
+
+# generate ToC
+def gen_ToC():
+    #print("Generating Table of Contents...")
+    ##
+    #   Goal: make list (html) of pages using the page obj's url
+    ##
+    ret = '''
+\t<nav>
+\t\t<ul style="list-style-type: none;">
+'''
+
+    for p in pages:
+        #print(p.page_dir + ", " + p.url)
+        ret += '\t\t\t<li style="display: inline-block;"><a href="./' + p.url + '">' + p.page_dir.capitalize() + '</a></li>\n'
+
+    ret += '''\t\t</ul>
+\t</nav>
+'''
+    # print("ToC: \n" + ret)
+    return ret
+
+
+# end get_ToC()
 
 # entry of build module
 def build_entry(site_name):
@@ -66,7 +89,7 @@ def build_entry(site_name):
 
             # render pages to site_name/public/ folder
             with open(site_name + "/public/" + page.url, "w") as f:
-                f.write(page.render_page()[0])
+                f.write(page.render_page(gen_ToC())[0])
 
             # copy images
             files = os.listdir(site_name + "/pages/" + page.page_dir + "/img/")

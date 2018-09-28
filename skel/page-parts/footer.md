@@ -1,6 +1,5 @@
 <style style="display:none">
 footer {
-    display: inline;
     background-color: #bbbbbb;
 }
 footer > * {

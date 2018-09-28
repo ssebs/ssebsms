@@ -16,6 +16,7 @@
 #   - section data
 ##
 
+import os
 from markdown import markdown
 
 
@@ -249,7 +250,7 @@ class Page:
     # end render_section(sec)
 
     ## Main rendering method
-    def render_page(self):
+    def render_page(self, toc):
         # render order:
         # opening/meta, header, sections, footer, closing
         final_out = ["", ""]  # page content + url
@@ -270,16 +271,22 @@ class Page:
 </html>
 '''
         final_out[0] = opening_txt
+
+        # header
         final_out[0] += "   <!-- start header -->\n<header>\n"
         final_out[0] += markdown(self.header_txt)
+        final_out[0] += toc.replace(self.title, "<strong>" + self.title + "</strong>")
         final_out[0] += "\n</header>\n   <!-- end header -->\n"
 
+
+        # sections
         for sec in self.sections:
             # sections {sec-name, sec-theme, sec-option, sec-content}
             final_out[0] += "   <!-- start section: " + sec['sec-name'] + "-->\n"
             final_out[0] += self.render_section(sec)
             final_out[0] += "\n   <!-- end section: " + sec['sec-name'] + "-->\n"
 
+        # footer
         final_out[0] += "   <!-- start footer -->\n<footer>\n"
         final_out[0] += markdown(self.footer_txt)
         final_out[0] += "\n</footer>\n   <!-- end footer -->\n"
@@ -289,3 +296,4 @@ class Page:
 
     # end render_page
 # end class Page
+

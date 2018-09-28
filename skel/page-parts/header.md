@@ -1,12 +1,12 @@
 <style style="display:none">
 html {
     font-family: "Arial", sans-serif;
+    text-align: center;
 }
 img {
     width: 50px;
 }
 header {
-    display: inline;
     background-color: #bbbbbb;
 }
 header > * {
@@ -18,7 +18,7 @@ header > h1 {
 }
 </style>
 
-# ssebs Header
+# [ssebs](./index.html) 
 
 ![Logo](./img/ssebsLogo.png)
 
