@@ -24,7 +24,7 @@
 # [ ] test to make sure pages are there
 
 # 1 - imports
-import os, yaml, json
+import os, yaml, shutil
 
 
 # 2 - variable defs
@@ -56,15 +56,22 @@ def build_entry(site_name):
                 # print("Page: " + k + " file:" + v['filename'])
                 # print("Page: " + k + " hdr:" + v['header'])
                 # print("Page: " + k + " ftr:" + v['footer'])
-                pages.append(Page(site_name, (k + "/" + v['filename']), v['header'], v['footer']))
+                pages.append(Page(site_name, k, v['filename'], v['header'], v['footer']))
 
         # render pages to html, and write to public/ dir
         for page in pages:
             print("Generating page: " + page.title + " at: " + site_name + "/public/" + page.url)
-            #print("url:" + page.url)
-            #print(page.render_page()[0])
+            # print("url:" + page.url)
+            # print(page.render_page()[0])
+
+            # render pages to site_name/public/ folder
             with open(site_name + "/public/" + page.url, "w") as f:
                 f.write(page.render_page()[0])
+
+            # copy images
+            files = os.listdir(site_name + "/pages/" + page.page_dir + "/img/")
+            for f in files:
+                shutil.copy(site_name + "/pages/" + page.page_dir + "/img/" + f, site_name + "/public/img/")
 
     else:
         # print("ls: " + str(os.listdir("./")))

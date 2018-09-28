@@ -20,16 +20,18 @@ from markdown import markdown
 
 
 class Page:
-    def __init__(self, site_name, filename, header_file, footer_file):
+    def __init__(self, site_name, page_dir, filename, header_file, footer_file):
         """
         :param site_name:
         :param filename:
+        :param page_dir:
         :param header_file:
         :param footer_file:
         """
         # param based attrs
         self.site_name = site_name
-        self.filename = "./" + site_name + "/pages/" + filename
+        self.filename = "./" + site_name + "/pages/" + page_dir + "/" + filename
+        self.page_dir = page_dir
         self.header_file = "./" + site_name + "/page-parts/" + header_file
         self.footer_file = "./" + site_name + "/page-parts/" + footer_file
 
@@ -166,9 +168,10 @@ class Page:
                     if "\"" in sec_option:
                         sec_option = sec_option.replace("\"", "")
                     # print("Sec opt=" + sec_option)
+
                 # get section content
                 else:
-                    sec_content += (line + "\n").replace("\"", r'\"')    # Add the newline back
+                    sec_content += (line + "\n")    # Add the newline back
                 # print("Line: " + line)
 
             # end line in section data
@@ -202,7 +205,7 @@ class Page:
         # - <color>     <- color for (color) theme
         # - <img-name>  <- image for (billboard|parallax) themes
 
-        print("Theme: " + str(sec['sec-theme']))
+        # print("Theme: " + str(sec['sec-theme']))
         ret = ""
 
         start_txt = '''
