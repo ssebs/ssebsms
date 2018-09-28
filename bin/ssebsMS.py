@@ -35,12 +35,11 @@ Possible CMD's:
     build       <- build current website
     clean       <- clean generated files (delete for now)
     remove      <- remove ssebsMS website
-    run         <- run a local instance of your website
+    run <port>  <- run a local instance of your website
     help        <- output this help page
 
 ENV file:
-    ''' + env_filename + '''    <- Modify this file so you don't have to 
-specify [site-name] in every command.
+    ''' + env_filename + '''    <- Modify this file so you don't have to specify [site-name] in every command.
 '''
 ## 3 - main function ##
 def main(argv):
@@ -64,9 +63,9 @@ def main(argv):
         print(cmd[1] + " website cleaned.")
     elif "run" in cmd:
         print("Running website at " + cmd[1] + "/public")
-        if cmd[2]:
+        try:
             run(cmd[1], int(cmd[2]))
-        else:
+        except IndexError:
             run(cmd[1])
     else:
         print(help_output)
@@ -100,8 +99,10 @@ def clean(site_name):
     pass
 # end clean
 
+# check local environment file
 def get_env_var():
     ret = ""
+    has_var = False
     if env_filename in os.listdir("./"):
         with open(env_filename, "r") as f:
             # print("Contents of " + env_filename + ":")
@@ -111,6 +112,14 @@ def get_env_var():
                     if l.startswith("site-name"):
                         tmp = l.split("=")[1].strip()
                         ret = tmp
+                        has_var = True
+    if not has_var:
+        ans = input("Are you sure you want to use the default site at 'my_site/'? ")
+        if 'y' in ans.lower():
+            ret = "my_site"
+        else:
+            print("Please add a site name to the end of your command. e.g. 'ssebsMS.py CMD site-name'\n")
+            exit(1)
     return ret
 # end get_env_var()
 
@@ -122,28 +131,7 @@ def get_args(argv):
     if num_arg == 1:    # ssebsMS.py 
         return ""
     elif num_arg == 2:  # ssebsMS.py CMD
-        # check local environment file
-        if env_filename in os.listdir("./"):
-            with open(env_filename, "r") as f:
-                #print("Contents of " + env_filename + ":")
-                for l in f:
-                    if not l.startswith("#"):
-                        #print("config line: " + l.strip("\n"))
-                        if l.startswith("site-name"):
-                            tmp = l.split("=")[1].strip()
-                            print("site-name is: " + tmp + ". To change this, delete the line in " + env_filename + " or run with <sitename> parameter.\n")
-                            cmd_arg = [sys.argv[1], tmp]
-                    else:
-                        # line in file starts with a comment
-                        pass
-            # end with open
-        else:
-            ans = input("Are you sure you want to use the default site at 'my_site/'? ")
-            if 'y' in ans.lower():
-                cmd_arg = [sys.argv[1], "my_site"]
-            else:
-                print("Please add a site name to the end of your command. e.g. 'ssebsMS.py CMD site-name'\n")
-                return ""
+        cmd_arg = [sys.argv[1], get_env_var()]
     elif num_arg == 3:  # ssebsMS.py CMD site-name
         if sys.argv[2].isdigit():
             print("ISDIGIT: " + str(sys.argv))
