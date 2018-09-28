@@ -24,6 +24,8 @@ Possible CMD's:
     init        <- initialize a new ssebsMS website
     build       <- build current website
     clean       <- clean generated files (delete for now)
+    remove      <- remove ssebsMS website
+    run         <- run a local instance of your website
     help        <- output this help page
 
 ENV file:
@@ -70,8 +72,10 @@ Each page's config / content is in the same file. ssebsMS looks for a specified 
 │   ├── _clean.py
 │   ├── _init.py
 │   ├── _page.py
+│   ├── _run.py
 │   └── ssebsMS.py
 ├── ENV-ssebsMS
+├── .gitignore
 ├── LICENSE
 ├── README.md
 ├── skel
@@ -99,12 +103,14 @@ Each page's config / content is in the same file. ssebsMS looks for a specified 
 │   │           ├── __README__
 │   │           └── style.css
 │   ├── public
+│   │   ├── img
+│   │   │   └── .stub
+│   │   └── .stub
 │   └── themes
 │       ├── billboard.txt
 │       ├── blank.txt
 │       ├── color.txt
 │       └── parallax.txt
 └── ssebsMS.sh
-
 
 ```
