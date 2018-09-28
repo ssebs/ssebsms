@@ -1,16 +1,27 @@
-# run.py - run simplehttp server for website.
+###
+#   ssebsMS.py - ssebsMS cli utility
+#   (c) 2018 - Sebastian Safari - FOSS MIT License
+###
+
+##
+#   This file should be ran by the ssebsMS.py file
+##
 
 import http.server
 import socketserver
 import os
 
-PORT = 8008
-site_name = "test"
 
-web_dir = os.path.join(os.path.dirname(__file__), 'web')
-os.chdir("./" + site_name + "/public/")
+def srv(site_name,port):
+    os.chdir("./" + site_name + "/public/")
 
-Handler = http.server.SimpleHTTPRequestHandler
-httpd = socketserver.TCPServer(("", PORT), Handler)
-print("Serving at http://localhost:{}".format(PORT))
-httpd.serve_forever()
+    handler = http.server.SimpleHTTPRequestHandler
+    httpd = socketserver.TCPServer(("", port), handler)
+    print("Serving at http://localhost:{}".format(port))
+    httpd.serve_forever()
+# end srv()
+
+
+def run_entry(site_name="test",port=8008):
+    srv(site_name,port)
+# end run_entry()

@@ -24,6 +24,7 @@ from markdown import markdown
 from _init import init_test, init_entry
 from _build import build_test, build_entry
 from _clean import clean_test, clean_entry
+from _run import run_entry
 
 ## 2 - help output below (future commands to support) ##
 env_filename = "ENV-ssebsMS"
@@ -33,6 +34,8 @@ Possible CMD's:
     init        <- initialize a new ssebsMS website
     build       <- build current website
     clean       <- clean generated files (delete for now)
+    remove      <- remove ssebsMS website
+    run         <- run a local instance of your website
     help        <- output this help page
 
 ENV file:
@@ -41,8 +44,6 @@ specify [site-name] in every command.
 '''
 ## 3 - main function ##
 def main(argv):
-    cmd = ""    # Command to run
-
     # choose what to do next depending on arg
     cmd = get_args(argv)
 
@@ -54,21 +55,17 @@ def main(argv):
         print("Building " + cmd[1] + " website...")
         build(cmd[1])
         print(cmd[1] + " website built.")
-    elif "clean" in cmd:
+    elif "clean" in cmd or "remove" in cmd:
         print("Cleaning " + cmd[1] + " website...")
         clean(cmd[1])
         # TODO: have a clean and a delete
         print(cmd[1] + " website cleaned.")
-    elif "debug" in cmd:
-        print("Args: " + str(cmd) + "\n\n")
-        sample_md = '''
-# ssebs
-<hr>
-## Home page
-
-ssebs home!
-        '''
-        print(markdown(sample_md))
+    elif "run" in cmd:
+        print("Running website at " + cmd[1] + "/public")
+        if cmd[2]:
+            run(cmd[1], int(cmd[2]))
+        else:
+            run(cmd[1])
     else:
         print(help_output)
         exit(1)
@@ -89,12 +86,31 @@ def build(site_name):
     pass
 # end build()
 
+## 9 - run - server site
+def run(site_name,port=8008):
+    run_entry(site_name,port)
+# end run()
+
 # 6 - clean generated website
 def clean(site_name):
     #clean_test("ssebs_clean")
     clean_entry(site_name, env_filename)
     pass
 # end clean
+
+def get_env_var():
+    ret = ""
+    if env_filename in os.listdir("./"):
+        with open(env_filename, "r") as f:
+            # print("Contents of " + env_filename + ":")
+            for l in f:
+                if not l.startswith("#"):
+                    # print("config line: " + l.strip("\n"))
+                    if l.startswith("site-name"):
+                        tmp = l.split("=")[1].strip()
+                        ret = tmp
+    return ret
+# end get_env_var()
 
 ## 7 - get args from cli ##
 def get_args(argv):
@@ -127,7 +143,13 @@ def get_args(argv):
                 print("Please add a site name to the end of your command. e.g. 'ssebsMS.py CMD site-name'\n")
                 return ""
     elif num_arg == 3:  # ssebsMS.py CMD site-name
-        cmd_arg = [sys.argv[1], sys.argv[2]]
+        if sys.argv[2].isdigit():
+            print("ISDIGIT: " + str(sys.argv))
+            cmd_arg = [sys.argv[1], get_env_var(), sys.argv[2]]
+        else:
+            cmd_arg = [sys.argv[1], sys.argv[2]]
+    elif num_arg == 4:  # ssebsMS.py run? site-name port?
+        cmd_arg = [sys.argv[1], sys.argv[2], sys.argv[3]]
     else:               # ssebsMS.py CMD site-name ??? ?? ?
         return ""
     return cmd_arg
