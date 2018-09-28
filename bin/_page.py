@@ -209,8 +209,10 @@ class Page:
         # print("Theme: " + str(sec['sec-theme']))
         ret = ""
 
+
+        theme_txt = ""
         start_txt = '''
-           <section class="''' + sec['sec-theme'] + ''''" id="''' + sec['sec-name'] + '''">            
+           <section class="''' + sec['sec-theme'] + ''''" id="''' + sec['sec-name'] + '''" style='REPLACE_ME'>            
                    '''
         end_txt = '''
            </section>
@@ -222,8 +224,9 @@ class Page:
             #print(sec['sec-option'] + " is the option for " + sec['sec-theme'])
 
             # do something with site_name/themes/color.txt
+            theme_txt = '''background-color: ''' + sec['sec-option'] + ''';'''
             content = markdown(sec['sec-content'])
-            ret = start_txt + content + end_txt
+            ret = start_txt.replace("REPLACE_ME", theme_txt) + content + end_txt
 
         elif "billboard" in sec['sec-theme'] or "parallax" in sec['sec-theme']:
             #print(sec['sec-theme'] + " is the theme chosen for " + sec['sec-name'])
@@ -232,8 +235,11 @@ class Page:
             # check if parallax or billboard, try to change at end so code is uniform aside from actual content
             # do something with site_name/themes/(billboard|parallax).txt
             # make sure sec-option is an image that's in this page's img/ dir
+            if "billboard" in sec['sec-theme']:
+
+                theme_txt = '''background-image: url("''' + sec['sec-option'] + '''");'''
             content = markdown(sec['sec-content'])
-            ret = start_txt + content + end_txt
+            ret = start_txt.replace("REPLACE_ME", theme_txt) + content + end_txt
 
         elif "blank" in sec['sec-theme']:
             #print(sec['sec-theme'] + " is the theme chosen for " + sec['sec-name'])
@@ -263,6 +269,8 @@ class Page:
     <meta name="author" content="''' + self.author + ''''">
     <!-- TODO: Add keywords + description meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style/sakura.css">
+    <link rel="stylesheet" type="text/css" href="./style/ssebsms.css">
 </head>
 <html>
 '''

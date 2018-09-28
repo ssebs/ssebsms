@@ -44,17 +44,20 @@ def gen_ToC():
 \t\t<ul style="list-style-type: none;">
 '''
 
+    # TODO: Figure out how to make this ordered without hard coding home
+    for p in pages:
+        if "home" in p.page_dir.lower():
+            ret += '\t\t\t<li style="display: inline-block;"><a href="./' + p.url + '">' + p.page_dir.capitalize() + '</a></li>\n'
+
     for p in pages:
         #print(p.page_dir + ", " + p.url)
-        ret += '\t\t\t<li style="display: inline-block;"><a href="./' + p.url + '">' + p.page_dir.capitalize() + '</a></li>\n'
-
+        if "home" not in p.page_dir.lower():
+            ret += '\t\t\t<li style="display: inline-block;"><a href="./' + p.url + '">' + p.page_dir.capitalize() + '</a></li>\n'
     ret += '''\t\t</ul>
 \t</nav>
 '''
     # print("ToC: \n" + ret)
     return ret
-
-
 # end get_ToC()
 
 # entry of build module
@@ -91,10 +94,25 @@ def build_entry(site_name):
             with open(site_name + "/public/" + page.url, "w") as f:
                 f.write(page.render_page(gen_ToC())[0])
 
-            # copy images
+            # copy images from pages/
             files = os.listdir(site_name + "/pages/" + page.page_dir + "/img/")
             for f in files:
                 shutil.copy(site_name + "/pages/" + page.page_dir + "/img/" + f, site_name + "/public/img/")
+
+            # copy styles from pages/
+            files = os.listdir(site_name + "/pages/" + page.page_dir + "/style/")
+            for f in files:
+                shutil.copy(site_name + "/pages/" + page.page_dir + "/style/" + f, site_name + "/public/style/")
+
+            # copy images from page-parts/
+            files = os.listdir(site_name + "/page-parts/img/")
+            for f in files:
+                shutil.copy(site_name + "/page-parts/img/" + f, site_name + "/public/img/")
+
+            # copy styles from page-parts/
+            files = os.listdir(site_name + "/page-parts/style/")
+            for f in files:
+                shutil.copy(site_name + "/page-parts/style/" + f, site_name + "/public/style/")
 
     else:
         # print("ls: " + str(os.listdir("./")))

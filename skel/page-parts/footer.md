@@ -1,5 +1,7 @@
 <style style="display:none">
 footer {
+    padding-top: 75px;
+    padding-bottom: 75px;
     background-color: #bbbbbb;
 }
 footer > * {
